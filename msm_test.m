@@ -1,5 +1,5 @@
 %Egy konkrét terem implementálása, és a MSM tesztelése
-
+%GIT Teszt
 for i=1:1 %Pontlisa
 Wall_1_point_1 = [-100 0 25];
 Wall_1_point_2 = [100 0 25];
