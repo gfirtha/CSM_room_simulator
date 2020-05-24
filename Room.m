@@ -25,14 +25,14 @@ classdef Room
        function SourceIsValid(obj,j,k)
             %kilépési feltételek a pont érvényességére
             
-            %#1 Az MS a fal külsõ oldalán található; j. forrás, k. fal
+            for i=1:1%#1 Az MS a fal külsõ oldalán található; j. forrás, k. fal
             
             IsInside = sign(obj.WallArray(k).redA*obj.SourceArray(j).X0 + obj.WallArray(k).redB*obj.SourceArray(j).Y0 + obj.WallArray(k).redC*obj.SourceArray(j).Z0 + obj.WallArray(k).redD);
             if IsInside > 0
                    obj.SourceArray(j).valid=0;    
             end
-            
-            %#3 Az MS a szoba belsõ terébe esik
+            end
+            for i=1:1%#3 Az MS a szoba belsõ terébe esik
             
             for n=1:obj.NumWalls
                 IsInside = sign(obj.WallArray(n).redA*obj.SourceArray(j).X0 + obj.WallArray(n).redB*obj.SourceArray(j).Y0 + obj.WallArray(n).redC*obj.SourceArray(j).Z0 + obj.WallArray(n).redD);
@@ -42,24 +42,24 @@ classdef Room
                     obj.SourceArray(j).valid=0;
                 end
             end
-            
-            %#4 Az MS egybeesik a forrással - ez rekurziót eredményezne
-            
+            end
+            for i=1:1%#4 Az MS egybeesik a forrással - ez rekurziót eredményezne
             if isequal([obj.SourceArray(j).X0 obj.SourceArray(j).Y0 obj.SourceArray(j).Z0],[obj.Q.X0 obj.Q.Y0 obj.Q.Z0])
                    obj.SourceArray(j).valid=0;
             end
-            
-            %#5 A Source Factor abszolut értéke túl kicsi
+            end
+            for i=1:1%#5 A Source Factor abszolut értéke túl kicsi
             
             SRCmax = abs(obj.SourceArray(j).SRCFACTOR);
             if SRCmax < obj.SRCFACT_min
                    obj.SourceArray(j).valid=0;
             end
-            
-            %#6 A forrás túl messze van
+            end
+            for i=1:1%#6 A forrás túl messze van
             DIST=norm([obj.SourceArray(j).X0 obj.SourceArray(j).Y0 obj.SourceArray(j).Z0]-[obj.P.X0 obj.P.Y0 obj.P.Z0]);
             if DIST > obj.dmax
                    obj.SourceArray(j).valid=0;
+            end
             end
 
        end

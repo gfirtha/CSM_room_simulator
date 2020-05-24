@@ -272,19 +272,20 @@ SourceList = [QSource];
 NumWalls = 19;
 NumSources = 1;
 P = Source(1, 50,350,50, 1, 0,-1,0, 0);
-Order = 2;
+Order = 3;
 dmax=1000;
 Sourcemin=0.01; %-20dBSPL
 
 Test_Room = Room(NumWalls, WallList,NumSources,SourceList,P,QSource,Order,dmax,Sourcemin);
 Test_Result=Test_Room.CalculateMSList();
 
-for i=1:1 %Források ábrázolása - valamiért nem müxik
+for i=1:1 %Források ábrázolása
     
     for j=1:Test_Result.NumSources
+       
        coordinates=Test_Result.GetCoordinates(j);
        %figure(1)
-       scatter3(coordinates(1),coordinates(2),coordinates(3),1,'r') 
+       scatter3(coordinates(1),coordinates(2),coordinates(3),1,'g'); 
     end
     
 end
